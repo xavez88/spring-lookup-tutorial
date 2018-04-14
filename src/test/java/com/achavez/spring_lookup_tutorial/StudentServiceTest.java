@@ -27,4 +27,15 @@ public class StudentServiceTest {
         assertNotSame(first.getSchoolNotification(),second.getSchoolNotification());
 
     }
+
+    @Test
+    public void whenAbstractGetterMethodInjects_thenNewInstanceReturned(){
+        StudentService service = this.context.getBean(StudentService.class);
+        assertEquals("89", service.appendMark("Antonio",89));
+        assertEquals("59", service.appendMark("Sam",59));
+        assertEquals("100", service.appendMark("Ben",100));
+        assertEquals("100", service.appendMark("Sam",100));
+        assertEquals("59", service.appendMark("Ben",59));
+        assertEquals("50", service.appendMark("Manolo",50));
+    }
 }
